@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<font size="10">
     <div class="post">
 {% if post.published_date %}
     <div class="date">
@@ -13,8 +14,9 @@
 		<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 		<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 	{% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <h1>{{ post.title }}</h1>
+        <img src="{{ post.cover.url }}" alt = "{{ post.title }}">
+        <p><h4>{{ post.text|linebreaksbr }}</p></h4>
     </div>
     <hr>
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
@@ -27,4 +29,5 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
+</font>
 {% endblock %}
