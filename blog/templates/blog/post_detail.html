@@ -23,7 +23,7 @@
     <div class="comment">
         <div class="date">{{ comment.created_date }}</div>
         <strong>{{ comment.author }}</strong>
-        <p>{{ comment.text|linebreaks }}</p>
+        <p><font face="Times New Roman" size="16">{{ comment.text|linebreaks }}</font></p>
     </div>
 {% empty %}
     <p>No comments here yet :(</p>
