@@ -3,21 +3,13 @@ from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
-	
-def home(request):
-	context={
-		'posts':Post.objects.all()
-	}
-	return render(request,'blog/post_list.html',context)
-	
 
-class PostListView(ListView):
-	model=Post
-	template_name='blog/post_list.html' #<app>/<model>_<viewtype>.html
-	context_object_name='posts'
-	ordering=['-published_date']
-	paginate_by=5
+	
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    paginate_by=5
+    return render(request, 'blog/post_list.html', {'posts': posts})
+	
 	
 	
 def post_detail(request, pk):
