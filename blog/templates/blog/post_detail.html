@@ -1,7 +1,6 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<font face="Times New Roman" size="16">
     <div class="post">
 {% if post.published_date %}
     <div class="date">
@@ -29,5 +28,5 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
-</font>
+
 {% endblock %}
