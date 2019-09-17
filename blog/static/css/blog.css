@@ -10,12 +10,16 @@
     text-decoration: none;
 }
 
+ul {
+  margin: 0;
+}
+
 .content {
     margin-left: 40px;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+    font-family: 'Lobster', cursive;   
 }
 
 .date {
@@ -47,4 +51,15 @@ h1, h2, h3, h4 {
 
 .comment {
     margin: 20px 0px 20px 20px;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
 }
