@@ -5,7 +5,7 @@
 			<div class="date">
 				{{ post.published_date }}
              </div>
-             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
              <img src="{{ post.cover.url }}" alt = "{{ post.title }}">
              <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
 		</div>
@@ -28,6 +28,10 @@
 	  {% if page_obj.has_next %}
 	  <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}">Next</a>
 	  <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+	  <footer class="py-3 bg-grey">
+            <p class="m-0 text-dark text-center ">Copyright &copy; DetayoKing</p>
+      </footer>
+
 
 	  {% endif %}
 	{% endif %}

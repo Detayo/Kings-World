@@ -3,15 +3,25 @@ from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
-
-def post_list(request):
-	posts=Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-	paginate_by=5
-	return render(request, 'blog/post_list.html', {'posts': posts})
+from django.views.generic import(ListView, DetailView)
 	
-def post_detail(request, pk):
-	post = get_object_or_404(Post, pk=pk)
-	return render(request, 'blog/post_detail.html', {'post': post})
+def home(request):
+	context={
+		'posts':Post.objects.all()
+	}
+	return render(request,'blog/post_list.html',context)
+	
+
+class PostListView(ListView):
+	model=Post
+	template_name='blog/post_list.html' #<app>/<model>_<viewtype>.html
+	context_object_name='posts'
+	ordering=['-published_date']
+	paginate_by=5
+	
+	
+class PostDetailView(DetailView):
+	model=Post
 	
 @login_required
 def post_new(request):
@@ -72,3 +82,6 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+def about(request):
+	return render(request,'blog/about.html',{'title':'about'})
