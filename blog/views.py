@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import(ListView, DetailView)
+from django.views.generic import ListView
 	
 def home(request):
 	context={
@@ -20,8 +20,9 @@ class PostListView(ListView):
 	paginate_by=5
 	
 	
-class PostDetailView(DetailView):
-	model=Post
+def post_detail(request, pk):
+	post = get_object_or_404(Post, pk=pk)
+	return render(request, 'blog/post_detail.html', {'post': post})
 	
 @login_required
 def post_new(request):
