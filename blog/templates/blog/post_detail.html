@@ -14,6 +14,7 @@
 		<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 	{% endif %}
         <h1>{{ post.title }}</h1>
+<font face="Times New Roman" size="16">
         <img src="{{ post.cover.url }}" alt = "{{ post.title }}">
         <p><h4>{{ post.text|linebreaksbr }}</p></h4>
     </div>
@@ -23,10 +24,10 @@
     <div class="comment">
         <div class="date">{{ comment.created_date }}</div>
         <strong>{{ comment.author }}</strong>
-        <p><font face="Times New Roman" size="16">{{ comment.text|linebreaks }}</font></p>
+        <p>{{ comment.text|linebreaks }}</p>
     </div>
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
-
+</font>
 {% endblock %}
