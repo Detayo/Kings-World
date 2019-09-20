@@ -1,0 +1,10 @@
+.top {
+  margin: 0;
+  width: 100%;
+  border: 0px solid gold;
+  padding: 10px;
+}
+
+body {
+  background-color: black;
+}

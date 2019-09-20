@@ -1,0 +1,21 @@
+.page-header {
+    background-color: #000000;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: gold;
+    font-size: 50pt;
+    text-decoration: none;
+}
+
+div.a {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 150%;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
+    font-size: 100%
+}

@@ -5,11 +5,16 @@ from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 
 	
-def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    paginate_by=5
-    return render(request, 'blog/post_list.html', {'posts': posts})
 	
+def home(request):
+	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+	pagination_by=5
+	return render(request, 'blog/home.html', {'posts': posts})
+	
+def post_list(request):
+	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+	pagination_by=5
+	return render(request, 'blog/post-list.html', {'posts': posts})
 	
 	
 def post_detail(request, pk):
@@ -78,3 +83,6 @@ def add_comment_to_post(request, pk):
 
 def about(request):
 	return render(request,'blog/about.html',{'title':'about'})
+	
+def contact(request):
+	return render(request,'blog/contact.html',{'title':'contact'})

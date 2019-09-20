@@ -1,11 +1,11 @@
 .page-header {
-    background-color: #C25100;
+    background-color: #000000;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
+    color: #d4af37;
     font-size: 36pt;
     text-decoration: none;
 }
@@ -16,6 +16,7 @@ ul {
 
 .content {
     margin-left: 40px;
+    font-family: "Times New Roman", Times, serif;
 }
 
 h1, {
@@ -58,8 +59,12 @@ h1, {
 }
 
 .pagination a {
-  color: black;
+  color: #d4af37;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
 }
+
+div.a {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
