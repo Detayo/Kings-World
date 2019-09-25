@@ -1,19 +1,23 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
+from django.core.paginator import Paginator
 from django.utils import timezone
 from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, ContactForm
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 
 	
 	
 def home(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-	pagination_by=5
+	paginator = Paginator(posts, 10)
+	page = request.GET.get('page')
+	post=paginator.get_page(page)
 	return render(request, 'blog/home.html', {'posts': posts})
 	
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-	pagination_by=5
 	return render(request, 'blog/post-list.html', {'posts': posts})
 	
 	
@@ -85,4 +89,23 @@ def about(request):
 	return render(request,'blog/about.html',{'title':'about'})
 	
 def contact(request):
-	return render(request,'blog/contact.html',{'title':'contact'})
+	if request.method == 'GET':
+		form = ContactForm()
+		
+	else:
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			subject = form.cleaned_data['subject']
+			from_email = form.cleaned_data['from_email']
+			message = form.cleaned_data['message']
+			try:
+				send_mail(subject, message, from_email, ['detayoking@gmail.com'])
+			except BadHeaderError:
+				return HttpResponse('Invalid header found.')
+			return redirect('success')
+	return render(request, "blog/contact.html", {'form': form})
+
+def successView(request):
+    return HttpResponse('Success! Thank you for your message.')
+
+		

@@ -13,9 +13,7 @@
 		<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 		<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 	{% endif %}
-	<div class="a">
 			<h1>{{ post.title }}</h1>
-			
 			<img src="{{ post.cover.url }}" alt = "{{ post.title }}">
 			<p>{{ post.text|linebreaksbr }}</p>	
 			<hr>
@@ -27,7 +25,6 @@
 				<p>{{ comment.text|linebreaks }}</p>
 			</div>
 		</div>	
-	</div>
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}

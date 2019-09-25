@@ -14,11 +14,11 @@
 
 	<div class="top">
 		  {% load staticfiles %}
-		<p href="{% url 'articles' %}"><img src="{% static "blog/logo.jpg" %}"/></p>
+		<a href="{% url 'articles' %}"><img src="{% static "blog/logo.jpg" %}"/> </a>
 		</div>
 		 <div class="navbar-nav">
 			   <a class="nav-item nav-link" href="{% url 'blog-about' %}"><h5>About</h5></a>
-			   <a class="nav-item nav-link" href="{% url 'contact' %}"><h5>Contact</h5></a>
+			   <a class="nav-item nav-link" href="{% url 'contact' %}"><h5>Ask King</h5></a>
 	</div>
 		<font color="gold" style=>
 			<center>
@@ -28,35 +28,29 @@
 			</center>
 		{% for post in posts %}
 		<div class="post">
-			<div class="date">
-				{{ post.published_date }}
-             </div>
              <ul><h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1></ul>
+             <div class = "post_body">
+				{{ post.body|safe|truncatewords:"30"|linebreaks }}
+				<a href="{% url 'post_detail' pk=post.pk %}"> Read More</a>
+			</div>
 		</div>
-	{% endfor %}	
-	{% if is_paginated %}
+		{% endfor %}	
+	<div class="pagination">
+		<span class="step-links">
 
-	  {% if page_obj.has_previous %}
-	  <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-	  <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-
+	  {% if posts.has_previous %}
+		  <a href="?page=1">&laquo; first</a>
+		  <a href="?page{{posts.previous_page_number}}">previous</a>
 	  {% endif %}
-	  {% for num in page_obj.paginator.page_range %}
-	    {% if page_obj.number == num %}
-	      <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-    	{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-    	  <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-	    {% endif %}
-	  {% endfor %}
+	  
+		<span class="current">{{posts.number}}{{posts.paginator.num_pages}}</span>
+			{% if posts.has_next %}
+				<a href="?page={{posts.next_page_number}}">next</a>
+				<a href="?page={{posts.paginator.num_pages}}">last &raquo; </a>
+			{% endif %}
 
-	  {% if page_obj.has_next %}
-		  <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}">Next</a>
-		  <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-
-
-	  {% endif %}
-	{% endif %}
-		
+		</span>
+	</div>	
 		
 		</body>
 </html>
