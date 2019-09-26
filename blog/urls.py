@@ -11,4 +11,5 @@ urlpatterns = [
     path('post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
     path('about/', views.about, name='blog-about'),
     path('contact/', views.contact, name='contact'),
+    path('success/', views.successView, name='success'),
 ]

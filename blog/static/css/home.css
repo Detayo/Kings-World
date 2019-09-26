@@ -5,6 +5,17 @@
   padding: 10px;
 }
 
+h3{
+	display: inline;
+}
 body {
   background-color: #000000;
+}
+
+div.a {
+  text-align: right;
+} 
+
+div.b {
+  font-size: large;
 }

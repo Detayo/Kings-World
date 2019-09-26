@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
-<h2>Contact King's World</h2>
+<p>
 <form method="post">
 	{% csrf_token %}
 	{{ form.as_p }}
@@ -8,6 +8,7 @@
 		<button type="submit">Send</button>
 	</div>
 </form>
+</p>
 <p>
 	<h4>
 		@Whatsapp/Phone_call:<a href="tel:+234-806-223-2104">+234-806-223-2104 </a><br>

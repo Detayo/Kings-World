@@ -10,28 +10,32 @@
     <body>
     </style>
 </head>
-		<body>
+	<header>
 
 	<div class="top">
 		  {% load staticfiles %}
-		<a href="{% url 'articles' %}"><img src="{% static "blog/logo.jpg" %}"/> </a>
-		</div>
-		 <div class="navbar-nav">
-			   <a class="nav-item nav-link" href="{% url 'blog-about' %}"><h5>About</h5></a>
-			   <a class="nav-item nav-link" href="{% url 'contact' %}"><h5>Ask King</h5></a>
+		<img src='{% static "blog/logo.jpg" %}'>
 	</div>
-		<font color="gold" style=>
+			 <div class="a">
+				 <u><h3><a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a></u> &emsp;    
+						<u><a class="nav-item nav-link" href="{% url 'contact' %}">Ask King</a></h3></u>
+			 </div>
+	<font color="gold">
 			<center>
 				<h1>Welcome to King's World</h1>
 				<h5>Home of deep-inspiring articles</h5>
 				<p></p>
 			</center>
+	</header>
+	<body>
 		{% for post in posts %}
 		<div class="post">
              <ul><h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1></ul>
              <div class = "post_body">
-				{{ post.body|safe|truncatewords:"30"|linebreaks }}
-				<a href="{% url 'post_detail' pk=post.pk %}"> Read More</a>
+			 <div class="b"> 
+				<font color="deac49">{{ post.text|safe|truncatewords:"30"|linebreaks }}</font>
+				<a href="{% url 'post_detail' pk=post.pk %}"> <u>Read More</u></a>
+			 </div>
 			</div>
 		</div>
 		{% endfor %}	
@@ -52,8 +56,7 @@
 		</span>
 	</div>	
 		
-		</body>
-</html>
-
-    	<footer><p>&copy;2019 DetayoKing</p></footer>
+	</body>
+	</font>
+    <footer><font color="silver"><p>&copy;2019 DetayoKing</p></font></footer>
 </html>

@@ -93,7 +93,7 @@ def contact(request):
 		form = ContactForm(request.POST)
 		if form.is_valid():
 			subject = form.cleaned_data['subject']
-			from_email = form.cleaned_data['from_email']
+			from_email = form.cleaned_data['Email']
 			message = form.cleaned_data['message']
 			try:
 				send_mail(subject, message, from_email, ['detayoking@gmail.com'])
@@ -103,6 +103,6 @@ def contact(request):
 	return render(request, "blog/contact.html", {'form': form})
 
 def successView(request):
-    return HttpResponse('Success! Thank you for your message.')
+    return HttpResponse('Sent! DetayoKing will reply soonest, thanks')
 
 		
