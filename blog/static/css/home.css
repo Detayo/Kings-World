@@ -17,5 +17,9 @@ div.a {
 } 
 
 div.b {
-  font-size: large;
+  font-size: 25;
+}
+
+.breaker{
+	margin-bottom: 50px;
 }

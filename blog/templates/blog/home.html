@@ -29,15 +29,18 @@
 	</header>
 	<body>
 		{% for post in posts %}
+		<p>
 		<div class="post">
              <ul><h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1></ul>
              <div class = "post_body">
 			 <div class="b"> 
 				<font color="deac49">{{ post.text|safe|truncatewords:"30"|linebreaks }}</font>
 				<a href="{% url 'post_detail' pk=post.pk %}"> <u>Read More</u></a>
+				<div class="breaker"></div>
 			 </div>
 			</div>
 		</div>
+		</p>
 		{% endfor %}	
 	<div class="pagination">
 		<span class="step-links">

@@ -18,11 +18,16 @@
 			<p>{{ post.text|linebreaksbr }}</p>	
 			<hr>
 			<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+			<div class="breaker"></div>
+			<center><u><h2>Comments</u></h2></center>
+		
 		{% for comment in post.comments.all %}
+		   <hr>
 			<div class="comment">
-				<div class="date">{{ comment.created_date }}</div>
-				<strong>{{ comment.author }}</strong>
+				<u><strong>{{ comment.author }}</strong> <div class="date">{{ comment.created_date }}</div></u>
 				<p>{{ comment.text|linebreaks }}</p>
+				<hr>
+				<br>
 			</div>
 		</div>	
 {% empty %}

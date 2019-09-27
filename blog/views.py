@@ -5,7 +5,8 @@ from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, CommentForm, ContactForm
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
+from django.core.mail import BadHeaderError, send_mail
+from django.conf import settings
 
 	
 	
@@ -96,7 +97,7 @@ def contact(request):
 			from_email = form.cleaned_data['Email']
 			message = form.cleaned_data['message']
 			try:
-				send_mail(subject, message, from_email, ['detayoking@gmail.com'])
+				send_mail(subject, message, from_email, ['adetayolanipekun@gmail.com'])
 			except BadHeaderError:
 				return HttpResponse('Invalid header found.')
 			return redirect('success')
